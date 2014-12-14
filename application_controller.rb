@@ -1,5 +1,6 @@
 require 'bundler'
 Bundler.require
+require_relative './models/scraper.rb'
 
 class MyApp < Sinatra::Base
 
@@ -31,8 +32,9 @@ class MyApp < Sinatra::Base
   end
 
    get '/Happy' do
+    scraper = Scraper.new
+    @happy_title = scraper.happy_title
     erb :Happy
-    
   end
 
    get '/Home' do
@@ -51,6 +53,9 @@ class MyApp < Sinatra::Base
   end
 
    get '/Sad' do
+    scraper = Scraper.new
+    @sad_title = scraper.sad_title
+    puts @sad_title
     erb :Sad
     
   end
@@ -61,8 +66,10 @@ class MyApp < Sinatra::Base
   end
 
   get '/Hype' do
+    scraper = Scraper.new
+    @hype_title = scraper.hype_title
+    puts @hype_title
     erb :Hype
-    
   end
 
 end
