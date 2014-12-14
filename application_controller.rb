@@ -1,5 +1,6 @@
 require 'bundler'
 Bundler.require
+require_relative './models/scraper.rb'
 
 require 'bundler'
 Bundler.require
@@ -50,8 +51,9 @@ end
   end
 
    get '/Happy' do
+    scraper = Scraper.new
+    @happy_title = scraper.happy_title
     erb :Happy
-    
   end
 
    get '/Home' do
@@ -70,6 +72,9 @@ end
   end
 
    get '/Sad' do
+    scraper = Scraper.new
+    @sad_title = scraper.sad_title
+    puts @sad_title
     erb :Sad
     
   end
@@ -80,8 +85,10 @@ end
   end
 
   get '/Hype' do
+    scraper = Scraper.new
+    @hype_title = scraper.hype_title
+    puts @hype_title
     erb :Hype
-    
   end
 
 end
